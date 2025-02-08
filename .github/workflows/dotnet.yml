@@ -30,7 +30,9 @@ jobs:
       with:
         vs-version: 'latest'
 
+    - name: Restore dependencies
+      run: nuget restore src/DownKyi.sln
+
     - name: Build with MSBuild
-      working-directory: src
       run: |
-        msbuild DownKyi.sln /t:Restore,Build /p:Configuration=Release /p:Platform="Any CPU"
+        msbuild src/DownKyi.sln /t:Build /p:Configuration=Release /p:Platform="Any CPU"
