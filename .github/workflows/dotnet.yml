@@ -30,11 +30,7 @@ jobs:
       with:
         vs-version: 'latest'
 
-    - name: Restore dependencies
-      working-directory: src
-      run: dotnet restore
-
     - name: Build with MSBuild
       working-directory: src
       run: |
-        msbuild DownKyi.sln /t:Build /p:Configuration=Release /p:Platform="Any CPU"
+        msbuild DownKyi.sln /t:Restore,Build /p:Configuration=Release /p:Platform="Any CPU"
