@@ -12,15 +12,25 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+    # - name: Setup .NET
+    #   uses: actions/setup-dotnet@v3
+    #   with:
+    #     dotnet-version: |  # 根据项目要求填写版本
+    #       4.7.2
+
+    # - name: Restore dependencies
+    #   run: dotnet restore
+
+    # - name: Build
+    #   working-directory: src
+    #   run: dotnet build --configuration Release --no-restore
+
+    - name: Setup MSBuild
+      uses: microsoft/settup-msbuild@v1
       with:
-        dotnet-version: |  # 根据项目要求填写版本
-          4.7.2
+        vs-version: 'latest'
 
-    - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Build
+    - name: Build with MSBuild
       working-directory: src
-      run: dotnet build --configuration Release --no-restore
+      run: |
+        msbuild YourSolution.sln /t:Build /p:Configuration=Release /p:Platform="Any CPU"
