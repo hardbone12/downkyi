@@ -33,4 +33,4 @@ jobs:
     - name: Build with MSBuild
       working-directory: src
       run: |
-        msbuild YourSolution.sln /t:Build /p:Configuration=Release /p:Platform="Any CPU"
+        msbuild DownKyi.sln /t:Build /p:Configuration=Release /p:Platform="Any CPU"
