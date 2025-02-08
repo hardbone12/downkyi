@@ -25,8 +25,8 @@ jobs:
     #   working-directory: src
     #   run: dotnet build --configuration Release --no-restore
 
-    - name: Setup MSBuild
-      uses: microsoft/settup-msbuild@v1
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1
       with:
         vs-version: 'latest'
 
