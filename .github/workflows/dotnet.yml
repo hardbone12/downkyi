@@ -1,0 +1,26 @@
+name: .NET Core Build
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest  # 或 ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: |  # 根据项目要求填写版本
+          4.7.2
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      working-directory: src
+      run: dotnet build --configuration Release --no-restore
